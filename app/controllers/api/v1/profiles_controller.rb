@@ -5,7 +5,7 @@ class Api::V1::ProfilesController < ApplicationController
   def index
     @profiles = Profile.all
 
-    render json: @profiles
+    render json: @profiles , include: [:user]
   end
 
   # GET /profiles/1
