@@ -1,11 +1,11 @@
-class RatesController < ApplicationController
+class Api::V1::RatesController < ApplicationController
   before_action :set_rate, only: %i[ show update destroy ]
 
   # GET /rates
   def index
     @rates = Rate.all
 
-    render json: @rates
+    render json: @rates , include: [:profile] 
   end
 
   # GET /rates/1
