@@ -16,13 +16,10 @@ class Api::V1::RatesController < ApplicationController
 
   # POST /rates
   def create
-    @rate = Rate.new(rate_params)
+    @rate = Rate.create(rate_params)
+    render json: @rate
 
-    if @rate.save
-      render json: @rate, status: :created, location: @rate
-    else
-      render json: @rate.errors, status: :unprocessable_entity
-    end
+  
   end
 
   # PATCH/PUT /rates/1

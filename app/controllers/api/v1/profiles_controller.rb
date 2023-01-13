@@ -16,13 +16,10 @@ class Api::V1::ProfilesController < ApplicationController
 
   # POST /profiles
   def create
-    @profile = Profile.new(profile_params)
+    @profile = Profile.create(profile_params)
+    render json: @profile
 
-    if @profile.save
-      render json: @profile, status: :created, location: @profile
-    else
-      render json: @profile.errors, status: :unprocessable_entity
-    end
+    
   end
 
   # PATCH/PUT /profiles/1
