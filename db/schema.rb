@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_082448) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_12_140606) do
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
+    t.string "phone_number"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "stage_name"
+    t.string "artist_type"
+    t.string "image"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.string "description"
+    t.string "price"
+    t.integer "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_rates_on_profile_id"
+  end
+
+  
+  add_foreign_key "profiles", "users"
+  add_foreign_key "rates", "profiles"
 end
