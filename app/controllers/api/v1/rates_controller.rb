@@ -1,5 +1,6 @@
 class Api::V1::RatesController < ApplicationController
   before_action :set_rate, only: %i[ show update destroy ]
+  skip_before_action :authorized
 
   # GET /rates
   def index

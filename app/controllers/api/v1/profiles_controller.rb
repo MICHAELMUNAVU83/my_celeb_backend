@@ -1,11 +1,12 @@
 class Api::V1::ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show update destroy ]
+  skip_before_action :authorized
 
   # GET /profiles
   def index
     @profiles = Profile.all
 
-    render json: @profiles , include: [:user]
+    render json: @profiles , include: [:user, :rates]
   end
 
   # GET /profiles/1

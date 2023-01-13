@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
+puts "Seeding..."
 users = User.create([
     {username:"user1", password:"123" , email:"user1@gmail.com", role:"user" , phone_number:"1234567890"},
     {username:"user2", password:"123" , email:"user2@gmail.com" , role:"user" , phone_number:"1234567890"},
@@ -18,7 +18,6 @@ users = User.create([
 
 
 profiles = Profile.create([
-    {stage_name:"Stage name 1", artist_type:"singer" , image:"https://i.pinimg.com/originals/0d/0d/0d/0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d.jpg" , user_id:3},
     {stage_name:"Stage name 2", artist_type:"comedian" , image:"https://i.pinimg.com/originals/0d/0d/0d/0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d.jpg" , user_id:4}
 
 
@@ -33,3 +32,5 @@ rates = Rate.create([
     {description:"1 min video" , price:"2000" , profile_id:2}
 
 ])
+
+puts "Seeding done!"
